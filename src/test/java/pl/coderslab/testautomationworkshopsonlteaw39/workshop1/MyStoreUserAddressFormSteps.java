@@ -12,6 +12,7 @@ import java.time.Duration;
 
 public class MyStoreUserAddressFormSteps {
     private WebDriver driver;
+    private UserData userData;
     private MainPage mainPage;
     private LogInPage logInPage;
 
@@ -20,6 +21,7 @@ public class MyStoreUserAddressFormSteps {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
+        userData = new UserData(driver);
         mainPage = new MainPage(driver);
         logInPage = new LogInPage(driver);
 
@@ -31,9 +33,9 @@ public class MyStoreUserAddressFormSteps {
         mainPage.clickSignInButton();
     }
 
-    @And("Email and Password filled")
-    public void fillEmailAndPassword() {
-        logInPage.fillEmailAndPassword();
+    @And("{string} and {string} filled")
+    public void fillEmailAndPassword(String email, String password) {
+        logInPage.fillEmailAndPassword(userData.setEmail(email).setPassword(password));
     }
 
     @And("SIGN IN button clicked")

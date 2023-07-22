@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.UserData;
 
 public class LogInPage {
 
@@ -18,9 +19,9 @@ public class LogInPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillEmailAndPassword() {
-        emailInputBox.sendKeys("randomuser@mystore.nl");
-        passwordInputBox.sendKeys("Pass666");
+    public void fillEmailAndPassword(UserData userData) {
+        emailInputBox.sendKeys(userData.getEmail());
+        passwordInputBox.sendKeys(userData.getPassword());
     }
 
     public void clickSignIn() {
