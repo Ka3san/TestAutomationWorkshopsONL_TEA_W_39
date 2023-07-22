@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.LogInPage;
 import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.MainPage;
+import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.YourAccountPage;
 
 import java.time.Duration;
 
@@ -15,6 +16,8 @@ public class MyStoreUserAddressFormSteps {
     private UserData userData;
     private MainPage mainPage;
     private LogInPage logInPage;
+    private YourAccountPage yourAccountPage;
+
 
     @Given("^([^ ]+) opened in Google Chrome browser$")
     public void openInBrowser(String url) {
@@ -24,6 +27,7 @@ public class MyStoreUserAddressFormSteps {
         userData = new UserData(driver);
         mainPage = new MainPage(driver);
         logInPage = new LogInPage(driver);
+        yourAccountPage = new YourAccountPage(driver);
 
         driver.get(url);
     }
@@ -42,9 +46,11 @@ public class MyStoreUserAddressFormSteps {
     public void clickSignIn() {
         logInPage.clickSignIn();
     }
-//
-//
-//    @And("Addresses link from bottom 'YOUR ACCOUNT' block clicked")
+
+    @And("Addresses link from bottom 'YOUR ACCOUNT' block clicked")
+    public void clickAddressesLink() {
+        yourAccountPage.clickAddresses();
+    }
 //
 //
 //    @And("+ Create new address button clicked")
