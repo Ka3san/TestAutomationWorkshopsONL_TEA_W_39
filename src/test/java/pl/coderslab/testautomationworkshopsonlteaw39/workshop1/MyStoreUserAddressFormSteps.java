@@ -1,28 +1,31 @@
 package pl.coderslab.testautomationworkshopsonlteaw39.workshop1;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.MainPage;
 
 import java.time.Duration;
 
 public class MyStoreUserAddressFormSteps {
     private WebDriver driver;
-//    private MainPage mainPage;
+    private MainPage mainPage;
 
     @Given("^([^ ]+) opened in Google Chrome browser$")
     public void openInBrowser(String url) {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-//        mainPage = new MainPage(driver);
+        mainPage = new MainPage(driver);
 
         driver.get(url);
-
     }
 
-
-//    @When("Sign In button clicked")
+    @When("Sign In button clicked")
+    public void clickSignInButton() {
+        mainPage.clickSignInButton();
+    }
 //
 //
 //    @And("Email and Password filled")
