@@ -82,4 +82,18 @@ public class MyStoreUserAddressFormSteps {
         String successText = addressSuccessfulAdded.getText();
         assertEquals("Address successfully added!", successText);
     }
+
+    @And("Delete the above address")
+    public void deleteAddress() {
+        yourAddressesPage.clickDelete();
+    }
+
+    @And("Check if the above address has been deleted")
+    public void checkIfDeleted() {
+        WebElement addressSuccessfulDeleted = driver.findElement(By.xpath("//*[@id=\"notifications\"]/div/article/ul/li"));
+        assertTrue(addressSuccessfulDeleted.isDisplayed());
+        String deleteSuccessfulText = addressSuccessfulDeleted.getText();
+        assertEquals("Address successfully deleted!", deleteSuccessfulText);
+
+    }
 }

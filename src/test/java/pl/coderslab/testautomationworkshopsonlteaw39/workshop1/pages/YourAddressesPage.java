@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 public class YourAddressesPage {
     @FindBy(css = "div.addresses-footer span")
     private WebElement createNewAddressButton;
+    @FindBy(xpath = "/html/body/main/section/div/di/section/section/div[2]/article/div[2]/a[2]/span")
+    private WebElement deleteButton;
 
 
     public YourAddressesPage(WebDriver driver) {
@@ -16,5 +18,9 @@ public class YourAddressesPage {
 
     public void clickCreateNewAddress() {
         createNewAddressButton.click();
+    }
+
+    public void clickDelete() {
+        deleteButton.click();
     }
 }
