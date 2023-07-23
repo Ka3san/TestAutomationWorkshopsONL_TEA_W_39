@@ -12,7 +12,6 @@ import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.*;
 
 import java.time.Duration;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -82,6 +81,5 @@ public class MyStoreUserAddressFormSteps {
         assertTrue(addressSuccessfulAdded.isDisplayed());
         String successText = addressSuccessfulAdded.getText();
         assertEquals("Address successfully added!", successText);
-        fail("New address creation failed");
     }
 }
