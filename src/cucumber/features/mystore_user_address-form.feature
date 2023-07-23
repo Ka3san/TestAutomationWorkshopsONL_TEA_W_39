@@ -7,12 +7,13 @@ Feature: Mystore user address form filling and check
     And SIGN IN button clicked
     And Addresses link from bottom 'YOUR ACCOUNT' block clicked
     And + Create new address button clicked
-    And New address form filled with alias, address, city, zip/postal code, country, phone
+    And New address form filled with '<alias>', '<address>', '<city>', '<zip/postal code>', '<country>', '<phone>'
+    And Save button clicked
     Then Check if the filled data is correct
 #And Delete the above address
-#And Check if the above address has been deleted Examples:
+#And Check if the above address has been deleted
 
     Examples:
 
-      | phone     | email                 | password | alias  | address | city      | zipcode | country |
-      | 765342984 | randomuser@mystore.nl | Pass666  | qwerty | ArenA   | Amsterdam | 10-100  | Holland |
+      | phone     | email                 | password | alias  | address | city      | zip/postal code | country       |
+      | 765342984 | randomuser@mystore.nl | Pass666  | qwerty | ArenA   | Amsterdam | 10-100          | United Kingdom|

@@ -11,7 +11,7 @@ public class UserData {
     private String alias;
     private String address;
     private String city;
-    private String zipcode;
+    private String postcode;
     private String country;
 
     public String getPhone() {
@@ -68,12 +68,12 @@ public class UserData {
         return this;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getPostcode() {
+        return postcode;
     }
 
-    public UserData setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public UserData setPostcode(String postcode) {
+        this.postcode = postcode;
         return this;
     }
 

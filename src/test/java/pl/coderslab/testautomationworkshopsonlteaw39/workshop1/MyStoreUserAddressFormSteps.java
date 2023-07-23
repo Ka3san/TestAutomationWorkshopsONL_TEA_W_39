@@ -5,10 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.LogInPage;
-import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.MainPage;
-import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.YourAccountPage;
-import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.YourAddressesPage;
+import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.*;
 
 import java.time.Duration;
 
@@ -19,6 +16,7 @@ public class MyStoreUserAddressFormSteps {
     private LogInPage logInPage;
     private YourAccountPage yourAccountPage;
     private YourAddressesPage yourAddressesPage;
+    private NewAddressPage newAddressPage;
 
 
     @Given("^([^ ]+) opened in Google Chrome browser$")
@@ -31,6 +29,7 @@ public class MyStoreUserAddressFormSteps {
         logInPage = new LogInPage(driver);
         yourAccountPage = new YourAccountPage(driver);
         yourAddressesPage = new YourAddressesPage(driver);
+        newAddressPage = new NewAddressPage(driver);
 
         driver.get(url);
     }
@@ -59,9 +58,17 @@ public class MyStoreUserAddressFormSteps {
     public void clickCreateNewAddress() {
         yourAddressesPage.clickCreateNewAddress();
     }
-//
-//
-//    @And("New address form filled with alias, address, city, zip/postal code, country, phone")
+
+    @And("New address form filled with {string}, {string}, {string}, {string}, {string}, {string}")
+    public void fillAddressForm(String alias, String address, String city, String postcode, String country, String phone) {
+        newAddressPage.addressFormFill(userData.setAlias(alias).setAddress(address).setCity(city).setPostcode(postcode).setCountry(country).setPhone(phone));
+    }
+
+    @And("Save button clicked")
+    public void clickSaveButton() {
+        newAddressPage.clickSaveButton();
+    }
+
 //
 //
 //    @Then("Check if the filled data is correct")
