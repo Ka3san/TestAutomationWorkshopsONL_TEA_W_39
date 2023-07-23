@@ -2,12 +2,19 @@ package pl.coderslab.testautomationworkshopsonlteaw39.workshop1;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.*;
 
 import java.time.Duration;
+
+import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MyStoreUserAddressFormSteps {
     private WebDriver driver;
@@ -69,9 +76,12 @@ public class MyStoreUserAddressFormSteps {
         newAddressPage.clickSaveButton();
     }
 
-//
-//
-//    @Then("Check if the filled data is correct")
-//
-
+    @Then("Check if the filled data is correct")
+    public void checkData() {
+        WebElement addressSuccessfulAdded = driver.findElement(By.cssSelector("article.alert.alert-success"));
+        assertTrue(addressSuccessfulAdded.isDisplayed());
+        String successText = addressSuccessfulAdded.getText();
+        assertEquals("Address successfully added!", successText);
+        fail("New address creation failed");
+    }
 }
