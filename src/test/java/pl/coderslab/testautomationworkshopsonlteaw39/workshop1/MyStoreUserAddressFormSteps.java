@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.LogInPage;
 import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.MainPage;
 import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.YourAccountPage;
+import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.YourAddressesPage;
 
 import java.time.Duration;
 
@@ -17,6 +18,7 @@ public class MyStoreUserAddressFormSteps {
     private MainPage mainPage;
     private LogInPage logInPage;
     private YourAccountPage yourAccountPage;
+    private YourAddressesPage yourAddressesPage;
 
 
     @Given("^([^ ]+) opened in Google Chrome browser$")
@@ -28,6 +30,7 @@ public class MyStoreUserAddressFormSteps {
         mainPage = new MainPage(driver);
         logInPage = new LogInPage(driver);
         yourAccountPage = new YourAccountPage(driver);
+        yourAddressesPage = new YourAddressesPage(driver);
 
         driver.get(url);
     }
@@ -51,9 +54,11 @@ public class MyStoreUserAddressFormSteps {
     public void clickAddressesLink() {
         yourAccountPage.clickAddresses();
     }
-//
-//
-//    @And("+ Create new address button clicked")
+
+    @And("+ Create new address button clicked")
+    public void clickCreateNewAddress() {
+        yourAddressesPage.clickCreateNewAddress();
+    }
 //
 //
 //    @And("New address form filled with alias, address, city, zip/postal code, country, phone")
