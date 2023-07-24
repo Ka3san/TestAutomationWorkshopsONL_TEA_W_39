@@ -1,16 +1,43 @@
 package pl.coderslab.testautomationworkshopsonlteaw39.workshop2;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pl.coderslab.testautomationworkshopsonlteaw39.UserData;
+import pl.coderslab.testautomationworkshopsonlteaw39.pages.LogInPage;
+import pl.coderslab.testautomationworkshopsonlteaw39.pages.MainPage;
+
+import java.time.Duration;
 
 public class MyStoreShoppingProcedureSteps {
+    private WebDriver driver;
+    private UserData userData;
+    private MainPage mainPage;
+    private LogInPage logInPage;
 
 
+    @Given("^([^ ]+) is opened in Google Chrome browser$")
+    public void openInBrowser(String url) {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
+        userData = new UserData(driver);
+        mainPage = new MainPage(driver);
+        logInPage = new LogInPage(driver);
 
-//    Given https://mystore-testlab.coderslab.pl/index.php opened in Google Chrome browser
-//    When existing user logged in
-//    And Clothes button clicked
+        driver.get(url);
+    }
+
+    @When("Existing user logged in with given {string} and {string}")
+    public void logInUser(String email, String password) {
+        mainPage.clickSignInButton();
+        logInPage.fillEmailAndPassword(userData.setEmail(email).setPassword(password));
+        logInPage.clickSignIn();
+    }
+
+
+//    And Click Clothes button in top menu
 //    And Click Hummingbird Printed Sweater tile to purchase
 ////    And Check for a 20% discount
 //    And Choose M size
@@ -24,3 +51,4 @@ public class MyStoreShoppingProcedureSteps {
 //    And Click PLACE ORDER button
 //    Then Takes a screenshot to confirm order and total payment amount
 }
+

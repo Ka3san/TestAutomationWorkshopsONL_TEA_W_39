@@ -1,9 +1,9 @@
 Feature: Go through product purchasing procedure
 
   Scenario Outline: Successful product purchasing process
-    Given https://mystore-testlab.coderslab.pl/index.php opened in Google Chrome browser
-    When existing user logged in
-    And Clothes button clicked
+    Given https://mystore-testlab.coderslab.pl/index.php is opened in Google Chrome browser
+    When Existing user logged in with given '<email>' and '<password>'
+    And Click Clothes button in top menu
     And Click Hummingbird Printed Sweater tile to purchase
 #And Check for a 20% discount
     And Choose M size
@@ -18,7 +18,8 @@ Feature: Go through product purchasing procedure
     Then Takes a screenshot to confirm order and total payment amount
 
     Examples:
-      |  |
+      |email                |password|
+      |randomuser@mystore.nl|Pass666 |
 
 #Wejdź w historię zamówień i detale (najpierw kliknij w użytkownika zalogowanego, później kafelek),
 #sprawdź czy zamówienie znajduje się na liście ze statusem "Awaiting check payment" i kwotą taką samą jak na zamówieniu dwa kroki wcześniej.
