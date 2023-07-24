@@ -6,10 +6,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.testautomationworkshopsonlteaw39.UserData;
-import pl.coderslab.testautomationworkshopsonlteaw39.pages.ClothesPage;
-import pl.coderslab.testautomationworkshopsonlteaw39.pages.LogInPage;
-import pl.coderslab.testautomationworkshopsonlteaw39.pages.MainPage;
-import pl.coderslab.testautomationworkshopsonlteaw39.pages.YourAccountPage;
+import pl.coderslab.testautomationworkshopsonlteaw39.pages.*;
 
 import java.time.Duration;
 
@@ -20,6 +17,7 @@ public class MyStoreShoppingProcedureSteps {
     private LogInPage logInPage;
     private YourAccountPage yourAccountPage;
     private ClothesPage clothesPage;
+    private SweaterProductPage sweaterProductPage;
 
 
     @Given("^([^ ]+) is opened in Google Chrome browser$")
@@ -32,6 +30,7 @@ public class MyStoreShoppingProcedureSteps {
         logInPage = new LogInPage(driver);
         yourAccountPage = new YourAccountPage(driver);
         clothesPage = new ClothesPage(driver);
+        sweaterProductPage = new SweaterProductPage(driver);
 
         driver.get(url);
     }
@@ -53,9 +52,17 @@ public class MyStoreShoppingProcedureSteps {
         clothesPage.clickSweater();
     }
 ////    And Check for a 20% discount
-//    And Choose M size
-//    And Choose 5 pcs
-//    And Click ADD TO CART button
+
+    @And("Choose {string} size")
+    public void selectSizeM(String size) {
+        sweaterProductPage.clickAndSelectSize(size);
+    }
+
+    @And("Choose 5 pcs")
+    public void selectQuantity() {
+        sweaterProductPage.clickAndSelectQuantity();
+    }
+//    @And("Click ADD TO CART button")
 //    And Proceed to checkout
 //    And Address confirmed
 //    And Self pick up shipping method chosen
