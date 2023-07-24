@@ -10,19 +10,34 @@ public class CheckOutPage {
     private WebElement addressContinueButton;
     @FindBy(id = "delivery_option_8")
     private WebElement deliveryOptionCheckBox;
-    @FindBy(css = "button.continue.btn.btn-primary.float-xs-right")
+    @FindBy(css = ".continue:nth-child(2)")
     private WebElement shippingContinueButton;
+    @FindBy(id = "payment-option-1")
+    private WebElement payByCheckCheckBox;
+    @FindBy(id = "conditions_to_approve[terms-and-conditions]")
+    private WebElement termsOfServiceAgreementCheckbox;
 
     public CheckOutPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
     public void clickContinueButton() {
-        addressContinueButton.submit();
+        addressContinueButton.click();
     }
 
     public void selfPickUp() {
         deliveryOptionCheckBox.click();
         shippingContinueButton.click();
     }
+
+    public void paymentMethod() {
+        payByCheckCheckBox.click();
+    }
+
+    public void termsAgreement() {
+        termsOfServiceAgreementCheckbox.click();
+    }
+
+
 }
+

@@ -57,7 +57,7 @@ public class MyStoreShoppingProcedureSteps {
     public void clickSweaterTile() {
         clothesPage.clickSweater();
     }
-////    And Check for a 20% discount
+//    And Check for a 20% discount
 
     @And("Choose {string} size")
     public void selectSizeM(String size) {
@@ -81,20 +81,28 @@ public class MyStoreShoppingProcedureSteps {
 
     @And("Address confirmed")
     public void confirmAddress() {
-//        WebElement addressField = driver.findElement(By.xpath("//*[@id=\"id-address-delivery-address-4037\"]/header"));
-//        assertTrue(addressField.isDisplayed());
-//        WebElement addressCheckBox = driver.findElement(By.xpath("//*[@id=\"id-address-delivery-address-4037\"]/header/label/span[1]/span"));
-//        assertTrue(addressCheckBox.isSelected());
+        WebElement addressField = driver.findElement(By.xpath("//*[@id=\"id-address-delivery-address-4037\"]/header"));
+        assertTrue(addressField.isDisplayed());
+        WebElement addressCheckBox = driver.findElement(By.xpath("//input[@name='id_address_delivery']"));
+        assertTrue(addressCheckBox.isSelected());
         checkOutPage.clickContinueButton();
     }
 
-//    @And("Self pick up shipping method chosen")
-//    public void choosePickUpShippingMethod() {
-//        checkOutPage.selfPickUp();
+    @And("Self pick up shipping method chosen")
+    public void choosePickUpShippingMethod() {
+        checkOutPage.selfPickUp();
+    }
+
+//    @And("Pay by Check payment chosen")
+//    public void choosePaymentMethod() {
+//        checkOutPage.paymentMethod();
+//    }
+//
+//    @And("Click Terms Of Service agreement checkbox")
+//    public void agreeTermsOfService() {
+//        checkOutPage.termsAgreement();
 //    }
 
-//    And Pay by Check payment chosen
-//    And Click Terms Of Service agreement checkbox
 //    And Click PLACE ORDER button
 //    Then Takes a screenshot to confirm order and total payment amount
 }
