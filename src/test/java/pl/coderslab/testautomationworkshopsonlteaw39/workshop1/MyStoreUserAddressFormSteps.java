@@ -8,7 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages.*;
+import pl.coderslab.testautomationworkshopsonlteaw39.UserData;
+import pl.coderslab.testautomationworkshopsonlteaw39.pages.*;
 
 import java.time.Duration;
 

@@ -1,4 +1,4 @@
-package pl.coderslab.testautomationworkshopsonlteaw39.workshop1.pages;
+package pl.coderslab.testautomationworkshopsonlteaw39.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
