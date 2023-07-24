@@ -58,12 +58,21 @@ public class MyStoreShoppingProcedureSteps {
         sweaterProductPage.clickAndSelectSize(size);
     }
 
-    @And("Choose 5 pcs")
-    public void selectQuantity() {
-        sweaterProductPage.clickAndSelectQuantity();
+    @And("Choose {string} pcs")
+    public void selectQuantity(String quantity) {
+        sweaterProductPage.SelectQuantity(quantity);
     }
-//    @And("Click ADD TO CART button")
-//    And Proceed to checkout
+
+    @And("Click ADD TO CART button")
+    public void clickAddCart() {
+        sweaterProductPage.clickAddToCart();
+    }
+
+    @And("Proceed to checkout")
+    public void clickProceedToCheckoutTwice() {
+        sweaterProductPage.proceedToCheckout();
+    }
+
 //    And Address confirmed
 //    And Self pick up shipping method chosen
 //    And Pay by Check payment chosen

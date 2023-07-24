@@ -11,6 +11,12 @@ public class SweaterProductPage {
     private WebElement sizeSelectBox;
     @FindBy(id = "quantity_wanted")
     private WebElement quantitySelectBox;
+    @FindBy(css = "button.btn.btn-primary.add-to-cart")
+    private WebElement addToCartButton;
+    @FindBy(css = ".cart-content-btn > .btn-primary")
+    private WebElement proceedToCheckoutButton;
+    @FindBy(css = ".text-sm-center > .btn")
+    private WebElement anotherProceedButton;
 
     public SweaterProductPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -22,7 +28,16 @@ public class SweaterProductPage {
         sizeSelectBox.sendKeys(Keys.TAB);
     }
 
-    public void clickAndSelectQuantity() {
-        quantitySelectBox.sendKeys("5");
+    public void SelectQuantity(String quantity) {
+        quantitySelectBox.sendKeys(quantity);
+    }
+
+    public void clickAddToCart() {
+        addToCartButton.click();
+    }
+
+    public void proceedToCheckout() {
+        proceedToCheckoutButton.click();
+        anotherProceedButton.click();
     }
 }
