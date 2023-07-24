@@ -2,15 +2,19 @@ package pl.coderslab.testautomationworkshopsonlteaw39.workshop2;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.testautomationworkshopsonlteaw39.UserData;
 import pl.coderslab.testautomationworkshopsonlteaw39.pages.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -93,17 +97,25 @@ public class MyStoreShoppingProcedureSteps {
         checkOutPage.selfPickUp();
     }
 
-//    @And("Pay by Check payment chosen")
-//    public void choosePaymentMethod() {
-//        checkOutPage.paymentMethod();
-//    }
-//
-//    @And("Click Terms Of Service agreement checkbox")
-//    public void agreeTermsOfService() {
-//        checkOutPage.termsAgreement();
-//    }
+    @And("Pay by Check payment chosen")
+    public void choosePaymentMethod() {
+        checkOutPage.paymentMethod();
+    }
 
-//    And Click PLACE ORDER button
-//    Then Takes a screenshot to confirm order and total payment amount
+    @And("Click Terms Of Service agreement checkbox")
+    public void agreeTermsOfService() {
+        checkOutPage.termsAgreement();
+    }
+
+    @And("Click PLACE ORDER button")
+    public void placeOrder() {
+        checkOutPage.clickPlaceOrder();
+    }
+
+    @Then("Takes a screenshot to confirm order and total payment amount")
+    public void takeScreenShot() throws IOException {
+        File tmpScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String currentDateTime = LocalDateTime.now().toString().replaceAll(":", "_");
+        Files.copy(tmpScreenshot.toPath(), Paths.get("/", "users", "ka3", "prove_of_test", "shop-success-" + currentDateTime + ".png"));
+    }
 }
-

@@ -16,6 +16,9 @@ public class CheckOutPage {
     private WebElement payByCheckCheckBox;
     @FindBy(id = "conditions_to_approve[terms-and-conditions]")
     private WebElement termsOfServiceAgreementCheckbox;
+    @FindBy(css = "button.btn.btn-primary.center-block")
+    private WebElement placeOrderButton;
+
 
     public CheckOutPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -26,7 +29,7 @@ public class CheckOutPage {
     }
 
     public void selfPickUp() {
-        deliveryOptionCheckBox.click();
+//        deliveryOptionCheckBox.click();
         shippingContinueButton.click();
     }
 
@@ -38,6 +41,8 @@ public class CheckOutPage {
         termsOfServiceAgreementCheckbox.click();
     }
 
-
+    public void clickPlaceOrder() {
+        placeOrderButton.click();
+    }
 }
 
