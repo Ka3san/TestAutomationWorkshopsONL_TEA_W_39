@@ -3,12 +3,16 @@ package pl.coderslab.testautomationworkshopsonlteaw39.workshop2;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pl.coderslab.testautomationworkshopsonlteaw39.UserData;
 import pl.coderslab.testautomationworkshopsonlteaw39.pages.*;
 
 import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MyStoreShoppingProcedureSteps {
     private WebDriver driver;
@@ -18,6 +22,7 @@ public class MyStoreShoppingProcedureSteps {
     private YourAccountPage yourAccountPage;
     private ClothesPage clothesPage;
     private SweaterProductPage sweaterProductPage;
+    private CheckOutPage checkOutPage;
 
 
     @Given("^([^ ]+) is opened in Google Chrome browser$")
@@ -31,6 +36,7 @@ public class MyStoreShoppingProcedureSteps {
         yourAccountPage = new YourAccountPage(driver);
         clothesPage = new ClothesPage(driver);
         sweaterProductPage = new SweaterProductPage(driver);
+        checkOutPage = new CheckOutPage(driver);
 
         driver.get(url);
     }
@@ -73,8 +79,20 @@ public class MyStoreShoppingProcedureSteps {
         sweaterProductPage.proceedToCheckout();
     }
 
-//    And Address confirmed
-//    And Self pick up shipping method chosen
+    @And("Address confirmed")
+    public void confirmAddress() {
+//        WebElement addressField = driver.findElement(By.xpath("//*[@id=\"id-address-delivery-address-4037\"]/header"));
+//        assertTrue(addressField.isDisplayed());
+//        WebElement addressCheckBox = driver.findElement(By.xpath("//*[@id=\"id-address-delivery-address-4037\"]/header/label/span[1]/span"));
+//        assertTrue(addressCheckBox.isSelected());
+        checkOutPage.clickContinueButton();
+    }
+
+//    @And("Self pick up shipping method chosen")
+//    public void choosePickUpShippingMethod() {
+//        checkOutPage.selfPickUp();
+//    }
+
 //    And Pay by Check payment chosen
 //    And Click Terms Of Service agreement checkbox
 //    And Click PLACE ORDER button
