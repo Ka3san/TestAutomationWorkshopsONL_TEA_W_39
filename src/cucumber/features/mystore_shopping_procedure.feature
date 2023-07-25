@@ -16,11 +16,11 @@ Feature: Go through product purchasing procedure
     And Click Terms Of Service agreement checkbox
     And Click PLACE ORDER button
     Then Takes a screenshot to confirm order and total payment amount
+    Then Go to the Orders history and details page
 
     Examples:
       | email                 | password | size | quantity |
       | randomuser@mystore.nl | Pass666  | M    | 5        |
 
 
-#Wejdź w historię zamówień i detale (najpierw kliknij w użytkownika zalogowanego, później kafelek),
 #sprawdź czy zamówienie znajduje się na liście ze statusem "Awaiting check payment" i kwotą taką samą jak na zamówieniu dwa kroki wcześniej.

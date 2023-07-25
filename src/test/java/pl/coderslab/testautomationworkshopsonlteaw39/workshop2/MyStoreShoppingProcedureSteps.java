@@ -28,6 +28,7 @@ public class MyStoreShoppingProcedureSteps {
     private ClothesPage clothesPage;
     private SweaterProductPage sweaterProductPage;
     private CheckOutPage checkOutPage;
+    private OrderConfirmationPage orderConfirmationPage;
 
 
     @Given("^([^ ]+) is opened in Google Chrome browser$")
@@ -42,6 +43,7 @@ public class MyStoreShoppingProcedureSteps {
         clothesPage = new ClothesPage(driver);
         sweaterProductPage = new SweaterProductPage(driver);
         checkOutPage = new CheckOutPage(driver);
+        orderConfirmationPage = new OrderConfirmationPage(driver);
 
         driver.get(url);
     }
@@ -131,5 +133,11 @@ public class MyStoreShoppingProcedureSteps {
         File tmpScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String currentDateTime = LocalDateTime.now().toString().replaceAll(":", "_");
         Files.copy(tmpScreenshot.toPath(), Paths.get("/", "users", "ka3", "prove_of_test", "shop-success-" + currentDateTime + ".png"));
+    }
+
+    @Then("Go to the Orders history and details page")
+    public void goToTheOrdersHistoryPage() {
+        orderConfirmationPage.clickUserName();
+        yourAccountPage.ordersHistoryClick();
     }
 }

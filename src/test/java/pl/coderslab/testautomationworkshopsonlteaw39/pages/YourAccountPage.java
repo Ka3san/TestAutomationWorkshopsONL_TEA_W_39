@@ -10,6 +10,8 @@ public class YourAccountPage {
     private WebElement addressesLink;
     @FindBy(id = "category-3")
     private WebElement clothesButton;
+    @FindBy(css = "#history-link > .link-item")
+    private WebElement orderHistoryAndDetailsTile;
 
     public YourAccountPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -18,8 +20,11 @@ public class YourAccountPage {
     public void clickAddresses() {
         addressesLink.click();
     }
-
     public void clickClothes() {
         clothesButton.click();
+    }
+
+    public void ordersHistoryClick() {
+        orderHistoryAndDetailsTile.click();
     }
 }
