@@ -16,6 +16,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MyStoreShoppingProcedureSteps {
@@ -61,7 +62,20 @@ public class MyStoreShoppingProcedureSteps {
     public void clickSweaterTile() {
         clothesPage.clickSweater();
     }
-//    And Check for a 20% discount
+
+    @And("Check for a 20% discount")
+    public void checkDiscount() {
+        WebElement regularPrice = driver.findElement(By.cssSelector("span.regular-price"));
+        String price = regularPrice.getText();
+        String noEuroPrice = price.replaceAll("[€,]", "");
+        WebElement discountPrice = driver.findElement(By.cssSelector("span.current-price-value"));
+        String newPrice = discountPrice.getText();
+        String noEuroNewPrice = newPrice.replaceAll("[€,]", "");
+        double price1 = Double.parseDouble(noEuroPrice);
+        double price2 = Double.parseDouble(noEuroNewPrice);
+        double discount = (price1 - price2) / price1 * 100;
+        assertEquals(20, discount);
+    }
 
     @And("Choose {string} size")
     public void selectSizeM(String size) {
@@ -85,9 +99,9 @@ public class MyStoreShoppingProcedureSteps {
 
     @And("Address confirmed")
     public void confirmAddress() {
-        WebElement addressField = driver.findElement(By.xpath("//*[@id=\"id-address-delivery-address-4037\"]/header"));
+        WebElement addressField = driver.findElement(By.cssSelector("label.radio-block"));
         assertTrue(addressField.isDisplayed());
-        WebElement addressCheckBox = driver.findElement(By.xpath("//input[@name='id_address_delivery']"));
+        WebElement addressCheckBox = driver.findElement(By.name("id_address_delivery"));
         assertTrue(addressCheckBox.isSelected());
         checkOutPage.clickContinueButton();
     }

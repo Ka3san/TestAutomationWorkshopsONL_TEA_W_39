@@ -5,7 +5,7 @@ Feature: Go through product purchasing procedure
     When Existing user logged in with given '<email>' and '<password>'
     And Click Clothes button in top menu
     And Click Hummingbird Printed Sweater tile to purchase
-#And Check for a 20% discount
+    And Check for a 20% discount
     And Choose '<size>' size
     And Choose '<quantity>' pcs
     And Click ADD TO CART button
