@@ -134,7 +134,7 @@ public class MyStoreShoppingProcedureSteps {
     public void takeScreenShot() throws IOException {
         File tmpScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String currentDateTime = LocalDateTime.now().toString().replaceAll(":", "_");
-        Files.copy(tmpScreenshot.toPath(), Paths.get("/", "users", "ka3", "prove_of_test", "shop-success-" + currentDateTime + ".png"));
+        Files.copy(tmpScreenshot.toPath(), Paths.get("/", "users", "ka3", "prove_of_test", "order-confirmation_" + currentDateTime + ".png"));
     }
 
     @And("Go to the Orders history and details page")
