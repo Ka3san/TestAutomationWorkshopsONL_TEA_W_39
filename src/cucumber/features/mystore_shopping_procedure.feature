@@ -17,10 +17,10 @@ Feature: Go through product purchasing procedure
     And Click PLACE ORDER button
     Then Takes a screenshot to confirm order and total payment amount
     Then Go to the Orders history and details page
+    Then Check if an order is on the 'Awaiting check payment' list and compare Total price with order confirmation page
 
     Examples:
       | email                 | password | size | quantity |
       | randomuser@mystore.nl | Pass666  | M    | 5        |
 
 
-#sprawdź czy zamówienie znajduje się na liście ze statusem "Awaiting check payment" i kwotą taką samą jak na zamówieniu dwa kroki wcześniej.

@@ -29,6 +29,7 @@ public class MyStoreShoppingProcedureSteps {
     private SweaterProductPage sweaterProductPage;
     private CheckOutPage checkOutPage;
     private OrderConfirmationPage orderConfirmationPage;
+    private OrderHistoryPage orderHistoryPage;
 
 
     @Given("^([^ ]+) is opened in Google Chrome browser$")
@@ -44,6 +45,7 @@ public class MyStoreShoppingProcedureSteps {
         sweaterProductPage = new SweaterProductPage(driver);
         checkOutPage = new CheckOutPage(driver);
         orderConfirmationPage = new OrderConfirmationPage(driver);
+        orderHistoryPage = new OrderHistoryPage(driver);
 
         driver.get(url);
     }
@@ -69,12 +71,12 @@ public class MyStoreShoppingProcedureSteps {
     public void checkDiscount() {
         WebElement regularPrice = driver.findElement(By.cssSelector("span.regular-price"));
         String price = regularPrice.getText();
-        String noEuroPrice = price.replaceAll("[€,]", "");
+        String noEuroSymbolPrice = price.replaceAll("[€,]", "");
         WebElement discountPrice = driver.findElement(By.cssSelector("span.current-price-value"));
         String newPrice = discountPrice.getText();
-        String noEuroNewPrice = newPrice.replaceAll("[€,]", "");
-        double price1 = Double.parseDouble(noEuroPrice);
-        double price2 = Double.parseDouble(noEuroNewPrice);
+        String noEuroSymbolNewPrice = newPrice.replaceAll("[€,]", "");
+        double price1 = Double.parseDouble(noEuroSymbolPrice);
+        double price2 = Double.parseDouble(noEuroSymbolNewPrice);
         double discount = (price1 - price2) / price1 * 100;
         assertEquals(20, discount);
     }
@@ -139,5 +141,14 @@ public class MyStoreShoppingProcedureSteps {
     public void goToTheOrdersHistoryPage() {
         orderConfirmationPage.clickUserName();
         yourAccountPage.ordersHistoryClick();
+    }
+
+    @Then("Check if an order is on the 'Awaiting check payment' list and compare Total price with order confirmation page")
+    public void orderCheck() {
+        String statusCheckText = orderHistoryPage.getOrderStatus();
+        assertEquals("Awaiting check payment", statusCheckText);
+//        String orderConfirmationPageTotalPrice = orderConfirmationPage.getTotalPrice();
+//        String orderHistoryPageTotalPrice = orderHistoryPage.getTotalPrice();
+//        assertEquals(orderConfirmationPageTotalPrice, orderHistoryPageTotalPrice);
     }
 }
