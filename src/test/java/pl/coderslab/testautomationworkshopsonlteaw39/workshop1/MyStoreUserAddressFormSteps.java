@@ -95,6 +95,5 @@ public class MyStoreUserAddressFormSteps {
         assertTrue(addressSuccessfulDeleted.isDisplayed());
         String deleteSuccessfulText = addressSuccessfulDeleted.getText();
         assertEquals("Address successfully deleted!", deleteSuccessfulText);
-
     }
 }

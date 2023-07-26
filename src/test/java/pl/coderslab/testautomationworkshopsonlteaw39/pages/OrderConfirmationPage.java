@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class OrderConfirmationPage {
     @FindBy(css = "span.hidden-sm-down")
     private WebElement loggedUserClick;
-    @FindBy(xpath = "/html/body/main/section/div/div/section/section[2]/div/div/div[1]/div[2]/table/tbody/tr[4]/td[2]")
+    @FindBy(xpath = "//tr[4]/td[2]")
     private WebElement totalField;
 
     public OrderConfirmationPage(WebDriver driver) {

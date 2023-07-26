@@ -16,8 +16,9 @@ Feature: Go through product purchasing procedure
     And Click Terms Of Service agreement checkbox
     And Click PLACE ORDER button
     Then Takes a screenshot to confirm order and total payment amount
-    Then Go to the Orders history and details page
-    Then Check if an order is on the 'Awaiting check payment' list and compare Total price with order confirmation page
+    And Go to the Orders history and details page
+    And Check if an order is on the 'Awaiting check payment' list
+    And Compare Total price with order confirmation page
 
     Examples:
       | email                 | password | size | quantity |

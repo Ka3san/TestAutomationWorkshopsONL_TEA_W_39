@@ -137,18 +137,22 @@ public class MyStoreShoppingProcedureSteps {
         Files.copy(tmpScreenshot.toPath(), Paths.get("/", "users", "ka3", "prove_of_test", "shop-success-" + currentDateTime + ".png"));
     }
 
-    @Then("Go to the Orders history and details page")
+    @And("Go to the Orders history and details page")
     public void goToTheOrdersHistoryPage() {
         orderConfirmationPage.clickUserName();
         yourAccountPage.ordersHistoryClick();
     }
 
-    @Then("Check if an order is on the 'Awaiting check payment' list and compare Total price with order confirmation page")
-    public void orderCheck() {
+    @And("Check if an order is on the 'Awaiting check payment' list")
+    public void orderStatusCheck() {
         String statusCheckText = orderHistoryPage.getOrderStatus();
         assertEquals("Awaiting check payment", statusCheckText);
-//        String orderConfirmationPageTotalPrice = orderConfirmationPage.getTotalPrice();
-//        String orderHistoryPageTotalPrice = orderHistoryPage.getTotalPrice();
-//        assertEquals(orderConfirmationPageTotalPrice, orderHistoryPageTotalPrice);
+    }
+
+    @And("Compare Total price with order confirmation page")
+    public void totalPriceCheck() {
+        String orderConfirmationPageTotalPrice = orderConfirmationPage.getTotalPrice();
+        String orderHistoryPageTotalPrice = orderHistoryPage.getTotalPrice();
+        assertEquals(orderConfirmationPageTotalPrice, orderHistoryPageTotalPrice);
     }
 }
